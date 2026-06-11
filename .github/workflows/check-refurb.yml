@@ -25,6 +25,9 @@ jobs:
       - run: bun run check.ts
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          # ⬇️ 新增这两行，把 TG 密钥注入到系统环境变量中
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_TO: ${{ secrets.TELEGRAM_TO }}
 
       - name: Update historical data
         run: bun run update-data.ts
